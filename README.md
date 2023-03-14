@@ -3,7 +3,7 @@
 
 This repo includes Project Structure Best Practices and C# Coding Standards for Unity.
 
-<img width="200" src="./Unity/Assets/Documentation/Images/ProjectIcon.png" alt="Best Practices">
+<img width="200" src="./Unity/Assets/Documentation/ReadMe/Art/Sprites/ProjectIcon.png" alt="Best Practices">
 
 **Getting Started**
 1. Download this repo (*.zip or *.git)
@@ -17,7 +17,7 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 
 <img width = "400" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
 
-This project is a living template. Showcasing best practices and coding standards for many common workflows.
+This project is a living template. It showcases the best practices and coding standards for many common workflows.
 
 **Includes Templates For** ...
 * Git Repo - Structure, .gitignore, ReadMe.md
