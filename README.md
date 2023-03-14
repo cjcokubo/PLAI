@@ -7,9 +7,9 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 
 **Getting Started**
 1. Download this repo (*.zip or *.git)
-2. Download the [Unity Editor](https://store.unity.com/#plans-individual)
-3. Open this repo in the Unity Editor
-4. Enjoy
+1. Download the [Unity Editor](https://store.unity.com/#plans-individual)
+1. Open this repo in the Unity Editor
+1. Enjoy
 
 ---
 
