@@ -13,8 +13,29 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 
 ---
 
+### Features
+
+<img width = "400" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
+
+This project is a living template. Showcasing best practices and coding standards for many common workflows.
+
+**Includes Templates For** ...
+* Git Repo - Structure, .gitignore, ReadMe.md
+* Scene Hiearchy Window - Structure
+* Project Window - Structure
+* Inspector Window - ReadMe.asset
+* Runtime Coding
+* Editor Coding 
+* Unit Testing 
+
+
+
+---
+
+### Overview
+
 **Documentation**
-* `README.md` - The primary documentation for this repo
+* `ReadMe.md` - The primary documentation for this repo
 * `Unity/Assets/Documentation/ReadMe.asset` - Select this asset in Unity to get started
 
 **Configuration**
@@ -32,6 +53,7 @@ This repo includes Project Structure Best Practices and C# Coding Standards for 
 
 ----
 
+### More
 
 A. Unity — Project Structure Best Practices
 =============
@@ -79,9 +101,8 @@ Benefits:
 
 Resources
 =============
-* A. Sam's Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
-* B. Sam's Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
-* C. Unity's Official How-To - <a href="https://unity.com/how-to/organizing-your-project#folder-structure">Unity — Organizing Your Project </a> 
+* Samuel Asher Rivello's Medium Article - <a href="https://sam-16930.medium.com/unity-project-structure-a694792cefed">Unity — Project Structure Best Practices</a>
+* Samuel Asher Rivello's Medium Article - <a href="https://sam-16930.medium.com/coding-standards-in-c-39aefee92db8">Unity — C# Coding Standards</a>
 
 
 Created By
