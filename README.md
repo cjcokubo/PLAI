@@ -53,10 +53,11 @@ This project is a living template. It showcases the best practices and coding st
 
 ----
 
-### More
-
-A. Unity — Project Structure Best Practices
+More
 =============
+
+### A. Unity — Project Structure Best Practices
+
 
 Employing an organized project structure is beneficial to your project and your team.
 
@@ -71,8 +72,7 @@ Benefits:
 * Maintenance — Consistent project structure will aid readability. Readability helps new and existing programmers revisit the code base for fixes and improvements.
 * Communication — Developers more implicitly understand each other in written and verbal communication.
 
-B. Coding Standards
-=============
+### B. Coding Standards
 
 Coding standards define a programming style. 
 
