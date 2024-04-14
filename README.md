@@ -3,33 +3,6 @@
 
 This repo includes Project Structure Best Practices and C# Coding Standards for Unity.
 
-<img width="200" src="./Unity/Assets/Documentation/ReadMe/Art/Sprites/ProjectIcon.png" alt="Best Practices">
-
-**Getting Started**
-1. Download this repo (*.zip or *.git)
-1. Download the [Unity Editor](https://store.unity.com/#plans-individual)
-1. Open this repo in the Unity Editor
-1. Enjoy
-
----
-
-### Videos
-
-This **Unity Project** is featured in the following YouTube video playlist.
-
-<table>
-<tr>
-<th>Unity Game Dev - In 3 Mins</th>
-</tr>
-<tr>
-<td>
-<a href="https://www.youtube.com/playlist?list=PL5domiITryHhlCKPSpiGuUt_kQg0nk3Of"><img width="500" src="https://i3.ytimg.com/vi/pXzLXNEW3bk/maxresdefault.jpg" /></a>
-</td>
-</tr>
-</table>
-
----
-
 ### Features
 
 <img width = "400" src="./Unity/Assets/Documentation/Images/Screenshot.png" />
