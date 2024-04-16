@@ -4,12 +4,11 @@ using System.Numerics;
 using NAudio.Wave;
 using MathNet.Numerics.IntegralTransforms;
 
-// AudioAnalyzer Class
-public class AudioAnalyzer
+// ParamDetection Class
+public class ParamDetection
 {
     public static void Main(string[] args)
     {
-
         // Buffer size = amount of audio data read at each iteration of the loop
         int bufferSize = 4096;
 
@@ -19,6 +18,13 @@ public class AudioAnalyzer
 
         // Testing wav file; Comment out if mic input used
         string audioFilePath = "Clown in Town.wav"; 
+
+        // Retrieving sample rate from the audio file
+        float sampleRate;
+        using (var audioFile = new AudioFileReader(audioFilePath))
+        {
+            sampleRate = audioFile.WaveFormat.SampleRate;
+        }
 
         // Processing audio file
         // Comment out if audio already preprocessed
@@ -37,14 +43,14 @@ public class AudioAnalyzer
                 {
                     byte[] pcmBuffer = new byte[bytesRead * 2];
                     Buffer.BlockCopy(buffer, 0, pcmBuffer, 0, pcmBuffer.Length);
-                    ProcessAudio(pcmBuffer, spectrum);
+                    ProcessAudio(pcmBuffer, spectrum, sampleRate);
                 }
             } while (bytesRead > 0);
         }
     }
 
     // Audio Processing
-    private static void ProcessAudio(byte[] audioData, float[] spectrum)
+    private static void ProcessAudio(byte[] audioData, float[] spectrum, float sampleRate)
     {
         float[] floatBuffer = new float[audioData.Length / 4]; 
         for (int i = 0; i < floatBuffer.Length; i++)
@@ -65,11 +71,11 @@ public class AudioAnalyzer
             spectrum[i] = (float)Math.Sqrt(fftBuffer[i].Real * fftBuffer[i].Real + fftBuffer[i].Imaginary * fftBuffer[i].Imaginary);
         }
 
-        DetectNotes(spectrum);
+        DetectNotes(spectrum, sampleRate);
     }
 
     // Frequency and Intensity detection
-    private static void DetectNotes(float[] spectrum)
+    private static void DetectNotes(float[] spectrum, float sampleRate)
     {
         float maxIntensity = 0f;
         int maxIndex = 0;
@@ -85,11 +91,42 @@ public class AudioAnalyzer
         }
 
         // Adjusted to match audio sample rate and buffer size
-        float frequency = maxIndex * 44100f / (2 * spectrum.Length);
+        float frequency = maxIndex * sampleRate / (2 * spectrum.Length);
 
-        // Debug logs
-        Console.WriteLine("Detected Note Frequency: " + frequency + " Hz, Intensity: " + maxIntensity);
+        // Calculate duration in milliseconds
+        float length = 1000f / frequency;
+
+        // Determine musical note
+        // Formula: return noteStrings[(Math.round(12 * (Math.log(frequency / 440) / Math.log(2))) + 69) % 12];
+        string[] notes = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+        // int semitoneCount = (int)Math.Round(12 * Math.Log(frequency / 440.0) / Math.Log(2));
+        int semitoneCount = (int)(Math.Round(12 * (Math.Log(frequency / 440) / Math.Log(2))) + 69) % 12;
+        int noteIndex = (semitoneCount + 9) % 12;
+        string noteName = notes[noteIndex];
+        // string noteName = "aaaa";
+
+
+        // Determine vibe
+        // Ranges determined after consultation with Jackson Waters
+        string vibe;
+        if (frequency > 2000)
+        {
+            vibe = "KIKI";
+        }
+        else if (frequency >= 200 && frequency <= 2000)
+        {
+            vibe = "NORMAL";
+        }
+        else
+        {
+            vibe = "BOUBA";
+        }
+
+        // Logs
+        Console.WriteLine("Frequency: " + frequency + "Hz, Note: " + noteName + ", Intensity: " + maxIntensity + ", Length: " + length + " ms, Vibe: " + vibe);
     }
+
 }
+
 
 
