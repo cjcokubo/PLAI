@@ -2,18 +2,26 @@ using System;
 using System.Numerics;
 using NAudio.Wave;
 using MathNet.Numerics.IntegralTransforms;
+using UnityEngine;
+using System.Collections.Generic;
 
 public class ParamDetection
 {
-    public static void Main(string[] args)
+    public List<string> GetPitches()
     {
         // Buffer size = amount of audio data read at each iteration of the loop
         int bufferSize = 4096;
         float[] spectrum = new float[bufferSize / 2];
 
         // Testing wav file; Comment out if mic input used
-        string audioFilePath = "musical_notes.wav";
+        // string audioFilePath = "musical_notes.wav";
         float sampleRate;
+
+        string audioFilePath = "Assets/Scripts/Detectors/doremi.wav"; 
+
+
+        List<string> output = new List<string>();
+
 
         using (var audioFile = new AudioFileReader(audioFilePath))
         {
@@ -33,14 +41,38 @@ public class ParamDetection
                 {
                     byte[] pcmBuffer = new byte[bytesRead * 2];
                     Buffer.BlockCopy(buffer, 0, pcmBuffer, 0, pcmBuffer.Length);
-                    ProcessAudio(pcmBuffer, spectrum, sampleRate);
+
+                    // ProcessAudio(pcmBuffer, spectrum, sampleRate);
+
+                    output.Add(ProcessAudio(pcmBuffer, spectrum, sampleRate));
+
                 }
             } while (bytesRead > 0);
         }
+
+        return output;
     }
 
+    // // Frequency to pitch conversion
+    // private static string Frequency2Pitch(float frequency)
+    // {
+    //     float A4 = 440;
+    //     double C0 = A4*Math.Pow(2, -4.75);
+    //     string[] name = new string[12]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+
+    //     int h =  (int) Math.Round(12*Math.Log(frequency/C0 , 2));
+    //     if(h < 0)
+    //     {
+    //         return "negative calculation";
+    //     }
+    //     int octave = h / 12;
+    //     int n = h % 12;
+    //     return name[n] + octave;
+
+    // }
+
     // Audio Processing
-    private static void ProcessAudio(byte[] audioData, float[] spectrum, float sampleRate)
+    private static string ProcessAudio(byte[] audioData, float[] spectrum, float sampleRate)
     {
         float[] floatBuffer = new float[audioData.Length / 2];
         for (int i = 0; i < floatBuffer.Length; i++)
@@ -69,11 +101,14 @@ public class ParamDetection
             spectrum[i] = (float)Math.Sqrt(fftBuffer[i].Real * fftBuffer[i].Real + fftBuffer[i].Imaginary * fftBuffer[i].Imaginary);
         }
 
-        DetectNotes(spectrum, sampleRate, maxIndexLimit);
+        return DetectNotes(spectrum, sampleRate, maxIndexLimit);
+    
     }
 
+
+
     // Detectors
-    private static void DetectNotes(float[] spectrum, float sampleRate, int maxIndexLimit)
+    private static string DetectNotes(float[] spectrum, float sampleRate, int maxIndexLimit)
     {
         float maxIntensity = 0f;
         int maxIndex = 0;
@@ -91,10 +126,19 @@ public class ParamDetection
 
         float frequency = maxIndex * sampleRate / spectrum.Length;
 
-        string[] notes = {"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
+
+        string[] notes = new string[12]{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"};
         int semitoneCount = (int)(Math.Round(12 * (Math.Log(frequency / 440) / Math.Log(2))) + 69);
         int noteIndex = semitoneCount % 12;
+
+
+        if (noteIndex < 0){
+            noteIndex = 12 + noteIndex;
+        }
+
         string noteName = notes[noteIndex];
+
+
 
         string vibe;
         if (frequency > 2000)
@@ -110,6 +154,9 @@ public class ParamDetection
             vibe = "BOUBA";
         }
 
-        Console.WriteLine("Frequency: " + frequency + " Hz, Note: " + noteName + ", Intensity: " + maxIntensity);
+        return "Frequency: " + frequency + " Hz, Note: " + noteName + ", Intensity: " + maxIntensity;
+
+
+
     }
 }
