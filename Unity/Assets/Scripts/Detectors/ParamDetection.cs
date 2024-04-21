@@ -140,19 +140,19 @@ public class ParamDetection
 
 
 
-        string vibe;
-        if (frequency > 2000)
-        {
-            vibe = "KIKI";
-        }
-        else if (frequency >= 200 && frequency <= 2000)
-        {
-            vibe = "NORMAL";
-        }
-        else
-        {
-            vibe = "BOUBA";
-        }
+        //string vibe;
+        //if (frequency > 2000)
+        //{
+        //    vibe = "KIKI";
+        //}
+        //else if (frequency >= 200 && frequency <= 2000)
+        //{
+        //    vibe = "NORMAL";
+        //}
+        //else
+        //{
+        //    vibe = "BOUBA";
+        //}
 
         return "Frequency: " + frequency + " Hz, Note: " + noteName + ", Intensity: " + maxIntensity;
 
