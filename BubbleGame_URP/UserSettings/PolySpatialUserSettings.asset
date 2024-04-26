@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 53
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e639827a9988b842a70fa5835541872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ConnectToPlayToDevice: 0
+  m_ConnectionTimeout: 6
+  m_ConnectionCandidates:
+    m_Connections:
+    - m_IP: 192.168.50.189
+      m_ServerPort: 9876
+    - m_IP: 127.0.0.1
+      m_ServerPort: 9876
+    m_ConnectionsInfo:
+    - IP: 192.168.50.189
+      Name: MacBook-Pro-6
+      ServerPort: 9876
+      Status: 0
+      PlayToDeviceHostVersion: 
+      PlayToDeviceHostMagicCookie: 0
+      IsSelected: 0
+    - IP: 127.0.0.1
+      Name: MacBook-Pro-6
+      ServerPort: 9876
+      Status: 0
+      PlayToDeviceHostVersion: 1.1.6
+      PlayToDeviceHostMagicCookie: 1707978141622291000
+      IsSelected: 0
